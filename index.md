@@ -17,9 +17,8 @@ The equation used for classifiying each tweet was given by the following:
                                              P(A | B) = P(B | A) * P(B)
  
  For example, to calculate the probability of that the tweet "I love Python" falls in the positive sentiment class, we 
- calculate the expression:  
-                                 P(+|tweet) = P(I|+)*P(+)+P(love|+)*P(+)+ P(Python|+)*P(+)
-
+ calculate the expression:   P( + | tweet ) = P( I | + )*P(+) + P (love| +)*P(+)  P(python| +) *P(+)
+ 
 Where P(+ | tweet) is the probability that given the tweet, it falls in the positive class, P(+) is the total probability of falling in the positive class, P(**word**| +) is the probability of a particular word in the positive sentiment class. 
   
 -------------------------------
