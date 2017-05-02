@@ -12,7 +12,35 @@ We use two algorithms to classify tweets into one of two sentiment classes: post
 The classification algorithms that we decided to use are Naive Bayes and K-Nearest Neighbor Algorithm.
 Naieve Bayes is a classification algorithm that uses prior probabilites in order to classify new doucments into a particular class. We use this technique with smooth, with the alpha paramter of 1. The alpha parameter is there to account for those words that are non-existant in each class, thus giving it a preliminary weight of one. This prevents any calculated probability to be 0 when there is at least one word in the twitter document that doesn't belong to a sentiment class. 
 
-For K-NN, in order to find the nearest neighbor, we use cosine similarity. When strive to develop a numerical vector repreentaiton of each tweet. We do this by 
+The equation used for classifiying each tweet was given by the following: 
+
+                                             P(A | B) = P(B | A) * P(B)
+ 
+ For example, to calculate the probability of that the tweet "Hello, I love Python" falls in the positive sentiment class, we 
+ calculate the expression: 
+ 
+                       P( + | tweet ) = P(Hello| +)*P(+) + P( I | + )*P(+) + P (love| +)*P(+)  P(python| +) *P(+)
+
+Where P(+ | tweet) is the probability that given the tweet, it falls in the positive class, P(+) is the total probability of falling in the positive class, P(**word**| +) is the probability of a particular word in the positive sentiment class. 
+  
+-------------------------------
+For K-NN, in order to find the nearest neighbor, we use cosine similarity. When strive to develop a numerical vector repreentaiton of each tweet. We do this by the following steps:
+
+1) for every unique word in both the positve and negative lexicon, we assign each word a particular position. Thus we form a dictionary like the following :
+                            word1 : 1
+                            word2 : 2
+                            word3 : 3
+these words and positions are used to construct feature vectors for each tweet.
+
+2) for each tweet, we construct a feature vector, the size of the lexicon. By looking up each word in the tweet, with the dictonary, we note the position and mark a 1 at that position. We skip any words that are not present in the dictionary but are present in the tweet. All other entries in the feature vector are zero.
+
+3) we then find the cosine simililarity of the new tweet with each feature vector in the postive and negative sentiment classes. The quation for cosine similary is given as : 
+
+                                            cos x = q*d/|q|*|d|
+                                            
+where q and d are the feature vector for the test tweet and the tweet in the positive sentiment or negative sentiment class
+
+4) upon finding all cosine values, the greatest cosine value across both positive and negative lexicon is found and the tweet is then assigned to that particular class. 
 
 ### DATA SET FOR THE PROJECT
 
@@ -33,7 +61,7 @@ For the Naive Bayes Classifier, we achieved an 80% accuracy when comparing pre-l
 
 For the KNN classifier, we achieved
 
-### Division of Responsibilities 
+### DIVISION OF RESPONSIBILITIES
 a.	***Jay Shah***: Training/Testing the Naïve Bayes Classifier, Grabbing Tweets for negative sentiments, cleaning the tweets : Achieved
 
 b.	***Nanda Kishore Kolluru***: Training/ Testing the K-NN Classifier, Grabbing Tweets for positive sentiments, cleaning and processing the tweets for analysis. : Achieved
