@@ -5,6 +5,10 @@ Companies all over are looking for better ways to connect with their customers. 
 
 We thought that it would be fun to use two classificaiton algorithms applied ot twitter sentiment.
 
+### Environment: 
+
+In this project we used Spark 1.6.0 provided to us by the DSBA cluster at UNCC. Thus, we coded our algorithms in Python version 2.7. 
+
 ### ALGORITHMS FOR THE PROJECT
 
 We use two algorithms to classify tweets into one of two sentiment classes: postive sentiment, which is characterized by a lexicon that consists of only positve words, and negative sentiment, which consists of commonly used negative words.
@@ -20,8 +24,7 @@ The equation used for classifiying each tweet was given by the following:
  calculate the expression:   P( + | tweet ) = P( I | + )*P(+) + P (love| +)*P(+)  P(python| +) *P(+)
  
 Where P(+ | tweet) is the probability that given the tweet, it falls in the positive class, P(+) is the total probability of falling in the positive class, P(**word**| +) is the probability of a particular word in the positive sentiment class. 
-  
--------------------------------
+
 For K-NN, in order to find the nearest neighbor, we use cosine similarity. When strive to develop a numerical vector repreentaiton of each tweet. We do this by the following steps:
 
 1) for every unique word in both the positve and negative lexicon, we assign each word a particular position. Thus we form a dictionary like the following :
